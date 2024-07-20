@@ -9,6 +9,13 @@ VoiceVista is a real-time voice translation web application that allows you to s
 - User-friendly interface with mobile-responsive design
 - Easy language selection with searchable dropdowns
 
+## Demo
+
+
+https://github.com/user-attachments/assets/d7977929-9c41-473f-a8a4-17853f38887e
+
+
+
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
