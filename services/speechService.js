@@ -1,6 +1,4 @@
 
-// services/speechService.js
-
 const speech = require('@google-cloud/speech');
 const { keyFilename } = require('../config/googleCloud');
 

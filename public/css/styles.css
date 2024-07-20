@@ -1,0 +1,65 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 600px;
+    padding-top: 2rem; /* Added more top margin */
+}
+
+.translation-box {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.translation-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.translation-header i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+.translation-text {
+    font-size: 1.1rem;
+    min-height: 50px;
+}
+
+#micButton {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
+.speaker-icon {
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 10px;
+}
