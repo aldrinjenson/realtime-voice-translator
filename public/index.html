@@ -69,7 +69,7 @@
             formData.append('targetLanguage', targetLanguageSelect.value);
 
             try {
-                const response = await axios.post('/transcribe', formData);
+                const response = await axios.post('/api/transcribe', formData);
                 sourceText.textContent = response.data.transcription;
                 translatedText.textContent = response.data.translation;
                 speakTranslation(response.data.translation);
