@@ -1,6 +1,3 @@
-
-// routes/transcriptionRoutes.js
-
 const express = require('express');
 const multer = require('multer');
 const { transcribe } = require('../services/speechService');
@@ -15,10 +12,38 @@ router.post('/transcribe', upload.single('audio'), async (req, res, next) => {
       throw new Error('No audio file provided');
     }
 
-    const transcription = await transcribe(req.file.buffer, req.body.sourceLanguage);
-    const translation = await translateText(transcription, req.body.targetLanguage);
+    const language1 = req.body.language1?.toLowerCase();
+    const language2 = req.body.language2?.toLowerCase();
 
-    res.json({ transcription, translation });
+    let { transcription, detectedLanguage } = await transcribe(req.file.buffer, language1, language2);
+
+    if(!transcription?.trim().length){
+      res.json({
+        originalText: '',
+        translatedText: '',
+        originalLanguage: language1,
+        translatedLanguage: language2
+      })
+    }
+    
+
+    let targetLanguage;
+    if (detectedLanguage === language1) {
+      targetLanguage = language2;
+    } else if (detectedLanguage === language2) {
+      targetLanguage = language1;
+    } else {
+      throw new Error('Detected language does not match either of the specified languages');
+    }
+
+    const translation = await translateText(transcription, targetLanguage);
+
+    res.json({ 
+      originalText: transcription, 
+      translatedText: translation, 
+      originalLanguage: detectedLanguage, 
+      translatedLanguage: targetLanguage 
+    });
   } catch (error) {
     next(error);
   }
